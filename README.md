@@ -9,3 +9,9 @@ The usage is very simple, just call `apply` function on the desired `Easing`:
 ```java
 double y = Easing.SINE_IN_OUT.apply(x);
 ```
+
+Or use the `interpolate` method to interpolate between values using a specific `Easing` function:
+
+```java
+double y = Easing.BACK_OUT.interpolate(8.0, 64.0, x);
+```

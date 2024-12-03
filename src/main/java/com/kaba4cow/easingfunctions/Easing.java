@@ -1,12 +1,14 @@
 package com.kaba4cow.easingfunctions;
 
+import java.util.function.DoubleFunction;
+
 /**
  * Provides a collection of easing functions commonly used in animations and interpolations. Easing functions determine the rate
  * of change of a parameter over time, adding a natural, smooth feel to animations.
  * 
  * @see <a href="https://easings.net">easings.net</a>
  */
-public enum Easing {
+public enum Easing implements DoubleFunction<Double> {
 
 	/**
 	 * Linear easing function.
@@ -14,7 +16,7 @@ public enum Easing {
 	LINEAR {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			return t;
 		}
 
@@ -25,7 +27,7 @@ public enum Easing {
 	SINE_IN {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			return 1.0 - Math.cos(t * PI_DIV_2);
 		}
 
@@ -36,7 +38,7 @@ public enum Easing {
 	SINE_OUT {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			return Math.sin(t * PI_DIV_2);
 		}
 
@@ -47,7 +49,7 @@ public enum Easing {
 	SINE_IN_OUT {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			return -0.5 * (Math.cos(PI * t) - 1.0);
 		}
 
@@ -58,7 +60,7 @@ public enum Easing {
 	QUAD_IN {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			return t * t;
 		}
 
@@ -69,7 +71,7 @@ public enum Easing {
 	QUAD_OUT {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			return 1.0 - (1.0 - t) * (1.0 - t);
 		}
 
@@ -80,7 +82,7 @@ public enum Easing {
 	QUAD_IN_OUT {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			if (t < 0.5)
 				return 2.0 * t * t;
 			else
@@ -94,7 +96,7 @@ public enum Easing {
 	CUBIC_IN {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			return t * t * t;
 		}
 
@@ -105,7 +107,7 @@ public enum Easing {
 	CUBIC_OUT {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			return 1.0 - Math.pow(1.0 - t, 3.0);
 		}
 
@@ -116,7 +118,7 @@ public enum Easing {
 	CUBIC_IN_OUT {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			if (t < 0.5)
 				return 4.0 * t * t * t;
 			else
@@ -130,7 +132,7 @@ public enum Easing {
 	QUART_IN {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			return t * t * t * t;
 		}
 
@@ -141,7 +143,7 @@ public enum Easing {
 	QUART_OUT {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			return 1.0 - Math.pow(1.0 - t, 4.0);
 		}
 
@@ -152,7 +154,7 @@ public enum Easing {
 	QUART_IN_OUT {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			if (t < 0.5)
 				return 8.0 * t * t * t * t;
 			else
@@ -166,7 +168,7 @@ public enum Easing {
 	QUINT_IN {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			return t * t * t * t * t;
 		}
 
@@ -177,7 +179,7 @@ public enum Easing {
 	QUINT_OUT {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			return 1.0 - Math.pow(1.0 - t, 5.0);
 		}
 
@@ -188,7 +190,7 @@ public enum Easing {
 	QUINT_IN_OUT {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			if (t < 0.5)
 				return 16.0 * t * t * t * t * t;
 			else
@@ -202,7 +204,7 @@ public enum Easing {
 	EXPO_IN {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			if (t == 0.0)
 				return 0.0;
 			else
@@ -216,7 +218,7 @@ public enum Easing {
 	EXPO_OUT {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			if (t == 1.0)
 				return 1.0;
 			else
@@ -230,7 +232,7 @@ public enum Easing {
 	EXPO_IN_OUT {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			if (t == 0.0)
 				return 0.0;
 			else if (t == 1.0)
@@ -248,7 +250,7 @@ public enum Easing {
 	CIRC_IN {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			return 1.0 - Math.sqrt(1.0 - Math.pow(t, 2.0));
 		}
 
@@ -259,7 +261,7 @@ public enum Easing {
 	CIRC_OUT {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			return Math.sqrt(1.0 - Math.pow(t - 1.0, 2.0));
 		}
 
@@ -270,7 +272,7 @@ public enum Easing {
 	CIRC_IN_OUT {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			if (t < 0.5)
 				return 0.5 * (1.0 - Math.sqrt(1.0 - Math.pow(2.0 * t, 2.0)));
 			else
@@ -284,7 +286,7 @@ public enum Easing {
 	BACK_IN {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			double c1 = 1.70158;
 			double c3 = c1 + 1.0;
 			return c3 * t * t * t - c1 * t * t;
@@ -297,7 +299,7 @@ public enum Easing {
 	BACK_OUT {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			double c1 = 1.70158;
 			double c3 = c1 + 1.0;
 			return 1.0 + c3 * Math.pow(t - 1.0, 3.0) + c1 * Math.pow(t - 1.0, 2.0);
@@ -310,7 +312,7 @@ public enum Easing {
 	BACK_IN_OUT {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			double c2 = 1.70158 * 1.525;
 			if (t < 0.5)
 				return 0.5 * (Math.pow(2.0 * t, 2.0) * ((c2 + 1.0) * 2.0 * t - c2));
@@ -325,7 +327,7 @@ public enum Easing {
 	ELASTIC_IN {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			if (t == 0.0)
 				return 0.0;
 			else if (t == 1.0)
@@ -341,7 +343,7 @@ public enum Easing {
 	ELASTIC_OUT {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			if (t == 0.0)
 				return 0.0;
 			else if (t == 1.0)
@@ -357,7 +359,7 @@ public enum Easing {
 	ELASTIC_IN_OUT {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			if (t == 0.0)
 				return 0.0;
 			else if (t == 1.0)
@@ -375,7 +377,7 @@ public enum Easing {
 	BOUNCE_IN {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			return 1.0 - BOUNCE_OUT.apply(1.0 - t);
 		}
 
@@ -386,7 +388,7 @@ public enum Easing {
 	BOUNCE_OUT {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			double n1 = 7.5625;
 			double d1 = 2.75;
 			if (t < 1.0 / d1)
@@ -406,7 +408,7 @@ public enum Easing {
 	BOUNCE_IN_OUT {
 
 		@Override
-		public double apply(double t) {
+		public Double apply(double t) {
 			if (t < 0.5)
 				return 0.5 * (1.0 - BOUNCE_OUT.apply(1.0 - 2.0 * t));
 			else
@@ -425,8 +427,22 @@ public enum Easing {
 	 * 
 	 * @param t a normalized time value between {@code 0.0} and {@code 1.0}
 	 * 
-	 * @return The eased value
+	 * @return the eased value
 	 */
-	public abstract double apply(double t);
+	@Override
+	public abstract Double apply(double t);
+
+	/**
+	 * Performs interpolation between {@code a} and {@code b} values using this easing function.
+	 * 
+	 * @param a the starting value
+	 * @param b the ending value
+	 * @param t a normalized time value between {@code 0.0} and {@code 1.0}
+	 * 
+	 * @return the interpolated value between {@code a} and {@code b}
+	 */
+	public double interpolate(double a, double b, double t) {
+		return a + (b - a) * apply(t);
+	}
 
 }
