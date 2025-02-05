@@ -4,10 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.kaba4cow</groupId>
 	<artifactId>easing-functions</artifactId>
-	<version>1.1.0</version>
+	<version>2.0.0</version>
 	<name>Easing Functions</name>
-	<description>A lightweight library offering a collection of easing functions for
-		animations</description>
+	<description>A lightweight library offering a collection of easing functions for animations</description>
 	<packaging>jar</packaging>
 	<properties>
 		<maven.compiler.source>8</maven.compiler.source>

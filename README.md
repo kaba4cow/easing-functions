@@ -1,17 +1,66 @@
-# Easings Functions Library
+# EasingFunctions Library
 
-A lightweight library providing a collection of easing functions from [easings.net](https://easings.net) commonly used in animations and interpolations. This library offers a clean and simple API to enhance animation workflows.
+A lightweight **Java** library that provides a collection of commonly used easing functions from [easings.net](https://easings.net) for animations and interpolations.
+
+## Features
+
+- Includes a variety of easing functions
+- Provides an `EasingFunction` interface with a standard `apply(double t)` method for applying the easing function
+- Supports interpolation between two values using the `interpolate(double a, double b, double t)` method
+- Pure **Java** implementation with no dependencies
+
+## Core Components
+
+### `EasingFunction`
+
+An interface representing an easing function. Provides methods for applying the easing function and interpolating values using it.
+
+### `EasingFunctions`
+
+An enumeration of all easing functions provided by the [easings.net](https://easings.net) website. This enumeration is implementing the `EasingFunction` interface.
+
+## Installation
+
+Clone and build:
+
+```bash
+git clone https://github.com/kaba4cow/easing-functions.git
+cd easing-functions
+mvn clean install
+```
+
+Add to your `pom.xml`:
+
+```
+xml<dependency>
+    <groupId>com.kaba4cow</groupId>
+    <artifactId>easing-functions</artifactId>
+    <version>2.0.0</version>
+</dependency>
+```
+
+Requirements: 
+
+- **Java** version **8** or higher.
 
 ## Usage
 
-The usage is very simple, just call `apply` function on the desired `Easing`:
+### Applying an Easing Function
 
 ```java
-double y = Easing.SINE_IN_OUT.apply(x);
+double t = 0.5;
+double eased = EasingFunctions.SINE_IN.apply(t);
 ```
 
-Or use the `interpolate` method to interpolate between values using a specific `Easing` function:
+### Interpolating Between Two Values
 
 ```java
-double y = Easing.BACK_OUT.interpolate(8.0, 64.0, x);
+double start = 127;
+double end = 512.0;
+double t = 0.5;
+double interpolated = EasingFunctions.QUAD_IN_OUT.interpolate(start, end, t);
 ```
+
+## License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
